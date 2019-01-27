@@ -75,6 +75,9 @@ class DecoderRNN(nn.Module):
            
             outputs = self.fc1(lstm_out)
             target = outputs.max(1)[1]
+            if(target == 1):
+                break
+        
             sentence.append(target.item())
             inputs = self.embed(target).unsqueeze(1)
             
